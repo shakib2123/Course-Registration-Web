@@ -1,6 +1,8 @@
 import PropTypes from "prop-types";
 import { BsCurrencyDollar } from "react-icons/bs";
 import { GoBook } from "react-icons/go";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const Course = ({ course, handleSelection }) => {
   const { thumbnail, course_title, course_detail, price, credit_time } = course;
   return (
@@ -26,6 +28,7 @@ const Course = ({ course, handleSelection }) => {
       >
         Select
       </button>
+      <ToastContainer />
     </div>
   );
 };

@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import Course from "../Course/Course";
 import Cart from "../Cart/Cart";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Courses = () => {
   const [courses, setCourses] = useState([]);
@@ -18,7 +20,7 @@ const Courses = () => {
     let count = course.credit_time;
     let cost = course.price;
     if (isExist) {
-      return alert("You already select this course.");
+      return toast("You already added this course.");
     } else {
       selectCourse.forEach(
         (item) => ((count += item.credit_time), (cost += item.price))
@@ -26,7 +28,7 @@ const Courses = () => {
       const totalTime = 20 - count;
 
       if (count > 20) {
-        return alert("This is huge, firstly finish all of this course.");
+        return toast("This is huge enough, firstly finish all of this course.");
       } else {
         setRemainingTime(totalTime);
         setCreditTime(count);
