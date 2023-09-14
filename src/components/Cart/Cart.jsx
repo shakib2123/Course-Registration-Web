@@ -1,10 +1,10 @@
 import PropTypes from "prop-types";
-const Cart = ({ selectCourse, creditTime }) => {
+const Cart = ({ selectCourse, creditTime, remainingTime }) => {
   return (
     <div className="bg-white rounded-lg p-4">
       <div className="border-b-2 border-gray-400 pb-4 mb-5">
         <h2 className="text-2xl font-bold text-[#2F80ED] ">
-          Credit Hour Remaining 7 hr
+          Credit Hour Remaining {remainingTime} hr
         </h2>
       </div>
       <h2 className="text-2xl font-bold mb-3">Course Name</h2>
@@ -21,6 +21,7 @@ const Cart = ({ selectCourse, creditTime }) => {
 Cart.propTypes = {
   selectCourse: PropTypes.object.isRequired,
   creditTime: PropTypes.number.isRequired,
+  remainingTime: PropTypes.number.isRequired,
 };
 
 export default Cart;
