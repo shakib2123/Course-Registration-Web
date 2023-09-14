@@ -5,6 +5,7 @@ import Cart from "../Cart/Cart";
 const Courses = () => {
   const [courses, setCourses] = useState([]);
   const [selectCourse, setSelectCourse] = useState([]);
+  const [creditTime, setCreditTime] = useState(0);
   useEffect(() => {
     fetch("./course.json")
       .then((response) => response.json())
@@ -12,10 +13,18 @@ const Courses = () => {
   }, []);
   const handleSelection = (course) => {
     const isExist = selectCourse.find((item) => item.id === course.id);
+    let count = course.credit_time;
     if (isExist) {
       return alert("You already select this course.");
     } else {
-      setSelectCourse([...selectCourse, course]);
+      selectCourse.forEach((item) => (count += item.credit_time));
+     
+      if (count > 20) {
+        return alert("This is huge, firstly finish all of this course.");
+      } else {
+        setCreditTime(count);
+        setSelectCourse([...selectCourse, course]);
+      }
     }
   };
   return (
@@ -34,7 +43,7 @@ const Courses = () => {
           ))}
         </div>
         <div className="w-2/3">
-          <Cart selectCourse={selectCourse}></Cart>
+          <Cart selectCourse={selectCourse} creditTime={creditTime}></Cart>
         </div>
       </div>
     </div>
