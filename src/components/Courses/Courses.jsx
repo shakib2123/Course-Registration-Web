@@ -7,6 +7,7 @@ const Courses = () => {
   const [selectCourse, setSelectCourse] = useState([]);
   const [creditTime, setCreditTime] = useState(0);
   const [remainingTime, setRemainingTime] = useState(20);
+  const [totalCost, setTotalCost] = useState(0);
   useEffect(() => {
     fetch("./course.json")
       .then((response) => response.json())
@@ -15,16 +16,21 @@ const Courses = () => {
   const handleSelection = (course) => {
     const isExist = selectCourse.find((item) => item.id === course.id);
     let count = course.credit_time;
+    let cost = course.price;
     if (isExist) {
       return alert("You already select this course.");
     } else {
-      selectCourse.forEach((item) => (count += item.credit_time));
+      selectCourse.forEach(
+        (item) => ((count += item.credit_time), (cost += item.price))
+      );
       const totalTime = 20 - count;
+
       if (count > 20) {
         return alert("This is huge, firstly finish all of this course.");
       } else {
         setRemainingTime(totalTime);
         setCreditTime(count);
+        setTotalCost(cost);
         setSelectCourse([...selectCourse, course]);
       }
     }
@@ -49,6 +55,7 @@ const Courses = () => {
             selectCourse={selectCourse}
             creditTime={creditTime}
             remainingTime={remainingTime}
+            totalCost={totalCost}
           ></Cart>
         </div>
       </div>
