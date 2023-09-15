@@ -15,5 +15,5 @@
 Firstly declear a useState then hold data on it using useEffect. Then data
 passed another file using props and make a dynamic card section using data from
 props. For cart section I use more useState and pass data conditionally in the
-cart section. For remaining time and credit time used condition. Here are some
-more functionality in this code.
+cart section. For remaining time and credit time used condition and etc. Here
+are some more functionality in this code.
