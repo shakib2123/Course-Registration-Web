@@ -10,7 +10,7 @@
 - Top of the cart have a time limitation function
 - At last the website has been made responsive
 
-### Here is some definition how I managed state in my assingment project:
+### Here is some definition how I managed state in my assignment project:
 
 Firstly declear a useState then hold data on it using useEffect. Then data
 passed another file using props and make a dynamic card section using data from
